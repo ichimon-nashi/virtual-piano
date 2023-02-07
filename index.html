@@ -11,30 +11,49 @@
       <header>
         <h2>Piano <em>Maestro</em></h2>
         <div class="volume-slider">
-          <span>Volume</span><input type="range">
+          <span>Volume</span><input type="range" id="volume-slider">
         </div>
       </header>
 
       <ul class="piano-keys">
-        <li id="a" class="key white a"><span>a</span></li>
-        <li id="w" class="key black w"><span>w</span></li>
-        <li id="s" class="key white s"><span>s</span></li>
-        <li id="e" class="key black e"><span>e</span></li>
-        <li id="d" class="key white d"><span>d</span></li>
-        <li id="f" class="key white f"><span>f</span></li>
-        <li id="t" class="key black t"><span>t</span></li>
-        <li id="g" class="key white g"><span>g</span></li>
-        <li id="y" class="key black y"><span>y</span></li>
-        <li id="h" class="key white h"><span>h</span></li>
-        <li id="u" class="key black u"><span>u</span></li>
-        <li id="j" class="key white j"><span>j</span></li>
-        <li id="k" class="key white k"><span>k</span></li>
-        <li id="o" class="key black o"><span>o</span></li>
-        <li id="l" class="key white l"><span>l</span></li>
-        <li id="p" class="key black p"><span>p</span></li>
-        <li id=";" class="key white ;"><span>;</span></li>
+        <li data-note="a" class="key white a"><span>a</span></li>
+        <li data-note="w" class="key black w"><span>w</span></li>
+        <li data-note="s" class="key white s"><span>s</span></li>
+        <li data-note="e" class="key black e"><span>e</span></li>
+        <li data-note="d" class="key white d"><span>d</span></li>
+        <li data-note="f" class="key white f"><span>f</span></li>
+        <li data-note="t" class="key black t"><span>t</span></li>
+        <li data-note="g" class="key white g"><span>g</span></li>
+        <li data-note="y" class="key black y"><span>y</span></li>
+        <li data-note="h" class="key white h"><span>h</span></li>
+        <li data-note="u" class="key black u"><span>u</span></li>
+        <li data-note="j" class="key white j"><span>j</span></li>
+        <li data-note="k" class="key white k"><span>k</span></li>
+        <li data-note="o" class="key black o"><span>o</span></li>
+        <li data-note="l" class="key white l"><span>l</span></li>
+        <li data-note="p" class="key black p"><span>p</span></li>
+        <li data-note=";" class="key white ;"><span>;</span></li>
       </ul>
     </div> 
+
+    <audio id="a" src="sounds/a.mp3"></audio>
+    <audio id="w" src="sounds/w.mp3"></audio>
+    <audio id="s" src="sounds/s.mp3"></audio>
+    <audio id="e" src="sounds/e.mp3"></audio>
+    <audio id="d" src="sounds/d.mp3"></audio>
+    <audio id="f" src="sounds/f.mp3"></audio>
+    <audio id="t" src="sounds/t.mp3"></audio>
+    <audio id="g" src="sounds/g.mp3"></audio>
+    <audio id="y" src="sounds/y.mp3"></audio>
+    <audio id="h" src="sounds/h.mp3"></audio>
+    <audio id="u" src="sounds/u.mp3"></audio>
+    <audio id="j" src="sounds/j.mp3"></audio>
+    <audio id="k" src="sounds/k.mp3"></audio>
+    <audio id="o" src="sounds/o.mp3"></audio>
+    <audio id="l" src="sounds/l.mp3"></audio>
+    <audio id="p" src="sounds/p.mp3"></audio>
+    <audio id=";" src="sounds/m.mp3"></audio>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="piano.js" charset="utf-8"></script> 
   </body>

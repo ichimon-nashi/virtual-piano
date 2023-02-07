@@ -1,119 +1,53 @@
-  //Detecting Button Press
+const keys = document.querySelectorAll(".key")
+const whiteKeys = document.querySelectorAll(".key.white")
+const blackKeys = document.querySelectorAll(".key.black")
 
-  $(document).click(function(e) {
-    
-    makeSound(e.target.id)
+const white_keys = ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";"];
+const black_keys = ["w", "e", "t", "y", "u", "o", "p"];
 
-    buttonAnimation(e.target.id)
-  })
+//Detect mouse click to play notes
 
-  //Detecting Keyboard Press
-  
-  document.addEventListener("keypress", function(event) {
-    
-    makeSound(event.key);
-    
-    buttonAnimation(event.key);
-  
-  })
-  
-  function makeSound(key) {
-    
-    switch (key) {
-      case "a":
-        let a = new Audio("sounds/a.mp3");
-        a.play();
-        break;
-  
-      case "w":
-        let w = new Audio("sounds/w.mp3");
-        w.play();
-        break;
-  
-      case "s":
-        let s = new Audio("sounds/s.mp3");
-        s.play();
-        break;
-    
-      case "e":
-        let e = new Audio("sounds/e.mp3");
-        e.play();
-        break;
+keys.forEach(key => {
+  key.addEventListener("click", () => playNote(key));
+})
 
-      case "d":
-        let d = new Audio("sounds/d.mp3");
-        d.play();
-        break;
-  
-      case "f":
-        let f = new Audio("sounds/f.mp3");
-        f.play();
-        break;
-  
-      case "t":
-        let t = new Audio("sounds/t.mp3");
-        t.play();
-        break;
-  
-      case "g":
-        let g = new Audio("sounds/g.mp3");
-        g.play();
-        break;
-      
-      case "y":
-        let y = new Audio("sounds/y.mp3");
-        y.play();
-        break;
-  
-      case "h":
-        let h = new Audio("sounds/h.mp3");
-        h.play();
-        break;
-  
-      case "u":
-        let u = new Audio("sounds/u.mp3");
-        u.play();
-        break; 
-      
-      case "j":
-        let j = new Audio("sounds/j.mp3");
-        j.play();
-        break;
-  
-      case "k":
-        let k = new Audio("sounds/k.mp3");
-        k.play();
-        break;
-  
-      case "o":
-        let o = new Audio("sounds/o.mp3");
-        o.play();
-        break;
-      
-      case "l":
-        let l = new Audio("sounds/l.mp3");
-        l.play();
-        break;
-  
-      case "p":
-        let p = new Audio("sounds/p.mp3");
-        p.play();
-        break;
-  
-      case ";":
-        let m = new Audio("sounds/m.mp3");
-        m.play();
-        break;     
-      default: console.log(key)
-    }
-  }
-  
-  function buttonAnimation(currentKey) {
-  
-  let activeKey = document.querySelector("." + currentKey)
-    activeKey.classList.add("pressed")
+function playNote(key) {
+  let pianoAudio = document.getElementById(key.dataset.note)
+  pianoAudio.play();
+  pressedKey(key);
+}
 
-    setTimeout (function() {
-      activeKey.classList.remove("pressed")
-    }, 100)
-  }
+//Animation to show pressed key
+
+function pressedKey(key) {
+  key.classList.add("pressed")
+  setTimeout (function() {
+    key.classList.remove("pressed");
+  }, 100)
+}
+
+//Detect keyboard button press
+document.addEventListener("keydown", event => {
+  const key = event.key
+  const whiteKeyIndex = white_keys.indexOf(key);
+  const blackKeyIndex = black_keys.indexOf(key);
+
+  if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex])
+  if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex])
+})
+
+//Volume slider
+let volumeControl = document.getElementById("volume-slider");
+
+function setVolume() {
+
+  // Get the array of audio element and loop through them to set the new volume value
+  Array.from(document.querySelectorAll("audio")).forEach(function(audio){
+  
+      //  if the input value is "", use zero
+      audio.volume = volumeControl.value == "" ? 0 : volumeControl.value / 100;
+    })
+};
+
+volumeControl.addEventListener('change', setVolume);
+volumeControl.addEventListener('input', setVolume);
